@@ -26,7 +26,39 @@ async function getMovieById (request, response, next) {
     }
 }
 
+async function createMovie(request, response, next) {
+    try {
+        const movieData = request.body;
+
+        if (!movieData.title) {
+            throw errorResponder(errorTypes.VALIDATION_ERROR, 'Title is required');
+        }
+
+        const movie = await movieService.createMovie(movieData);
+        return response.status(201).json(movie);
+    } catch (error) {
+        return next(error);
+    }
+}
+
+async function updateMovie(request, response, next) {
+    try {
+        const movieData = request.body;
+        const movie = await movieService.updateMovie(request.params.id, movieData);
+
+        if (!movie){
+            throw errorResponder(errorTypes.NOT_FOUND, 'Movie not found');
+        }
+
+        return response.status(200).json(movie);
+    } catch (error) {
+        return next(error);
+    }
+}
+
 module.exports = {
     getMovies,
     getMovieById,
+    createMovie,
+    updateMovie,
 };

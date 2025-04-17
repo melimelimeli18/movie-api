@@ -10,6 +10,14 @@ module.exports = (app) => {
     // GET MOVIES
     route.get('/', movieController.getMovies);
 
+    // POST MOVIES
+    route.post('/', movieController.createMovie);
+
+    // PUT MOVIES BY ID (update film berdasarkan id)
+    route.put('/:id', movieController.updateMovie);
+
+    //gatha
+
     // GET MOVIE BY ID
     route.get('/:id', movieController.getMovieById);
 };
