@@ -56,6 +56,29 @@ async function updateMovie(request, response, next) {
     }
 }
 
+// jeje
+
+async function deleteMovie(request, response, next) {
+    try {
+        const movie = await movieService.deleteMovie(request.params.id);
+        if (!movie) {
+            throw errorResponder(errorTypes.NOT_FOUND, 'Movie not found');
+        }
+        return response.status(200).json({ message: 'Movie deleted'});
+    } catch (error) {
+        return next(error);
+    }
+}
+
+async function getShortMovies(request, response, next) {
+    try {
+        const movies = await movieService.getShortMovies();
+        return response.status(200).json(movies);
+    } catch (error) {
+        return next(error);
+    }
+}
+
 module.exports = {
     getMovies,
     getMovieById,

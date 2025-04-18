@@ -16,6 +16,14 @@ module.exports = (app) => {
     // PUT MOVIES BY ID (update film berdasarkan id)
     route.put('/:id', movieController.updateMovie);
 
+    // jeje
+
+    // DELETE MOVIES BY ID
+    route.delete('/:id', movieController.deleteMovie);
+
+    // GET MOVIES SHORT
+    route.get('/short', movieController.getShortMovies);
+
     //gatha
 
     // GET MOVIE BY ID

@@ -18,6 +18,16 @@ async function updateMovie(id,movieData) {
     return movieRepository.updateMovie(id, movieData);
 }
 
+// jeje
+
+async function deleteMovie(id) {
+    return movieRepository.deleteMovie(id);
+}
+
+async function getShortMovies() {
+    return movieRepository.getShortMovies();
+}
+
 module.exports = {
     getMovies,
     getMovieById,

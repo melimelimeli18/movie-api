@@ -18,6 +18,16 @@ async function updateMovie(id, movieData) {
     return Movie.findByIdAndUpdate(id, movieData, { new: true});
 }
 
+// jeje
+
+async function deleteMovie(id) {
+    return Movie.findByIdAndDelete(id);
+}
+
+async function getShortMovies() {
+    return Movie.find({ runtime:{$lte:40} });
+}
+
 module.exports = {
     getMovies,
     getMovieById,
