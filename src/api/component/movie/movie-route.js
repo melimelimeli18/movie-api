@@ -36,4 +36,12 @@ module.exports = (app) => {
 
     // GET MOVIES by latest release
     route.get('/latest', movieController.getLatestMovies);
+
+    // caca
+
+    //GET MOVIES by query
+    route.get('/search/:query', movieController.searchMovies);
+
+    //GET MOVIES by genre
+    route.get('/genre/:genreId', movieController.getMoviesByGenre);
 };

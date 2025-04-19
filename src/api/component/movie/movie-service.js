@@ -38,6 +38,16 @@ async function getLatestMovies() {
     return movieRepository.getLatestMovies();
 }
 
+// caca
+
+async function searchMovies(query) {
+    return movieRepository.searchMovies(query);
+}
+
+async function getMoviesByGenre(genreId) {
+    return movieRepository.getMoviesByGenre(genreId);
+}
+
 module.exports = {
     getMovies,
     getMovieById,
@@ -46,5 +56,7 @@ module.exports = {
     deleteMovie,
     getShortMovies,
     getTopRatedMovies,
-    getLatestMovies
+    getLatestMovies,
+    searchMovies,
+    getMoviesByGenre,
 };

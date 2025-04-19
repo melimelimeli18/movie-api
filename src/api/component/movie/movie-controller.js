@@ -98,6 +98,27 @@ async function getLatestMovies(request, response, next) {
     }
 }
 
+// caca
+async function searchMovies(request, response, next) {
+    try {
+        const query = request.params.query;
+        const movies = await movieService.searchMovies(query);
+        return response.status(200).json(movies);
+    } catch (error) {
+        return next(error);
+    }
+}
+
+async function getMoviesByGenre(request, response, next) {
+    try {
+        const genreId = request.params.genreId;
+        const movies = await movieService.getMoviesByGenre(genreId);
+        return response.status(200).json(movies);
+    } catch (error) {
+        return next(error);
+    }
+}
+
 module.exports = {
     getMovies,
     getMovieById,
@@ -106,5 +127,7 @@ module.exports = {
     deleteMovie,
     getShortMovies,
     getTopRatedMovies,
-    getLatestMovies
+    getLatestMovies,
+    searchMovies,
+    getMoviesByGenre,
 };

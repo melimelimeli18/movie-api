@@ -42,6 +42,18 @@ async function getLatestMovies(limit = 1300) {
     return Movie.find({}).sort({ released: -1 }).limit(limit);
 }
 
+// caca
+
+async function searchMovies(query) {
+    return Movie.find({
+        title: { $regex: query, $options: 'i' },
+    });
+}
+
+async function getMoviesByGenre(genre, limit = 1300) {
+    return Movie.find({ genres: genre }).limit(limit);
+}
+
 module.exports = {
     getMovies,
     getMovieById,
@@ -50,5 +62,7 @@ module.exports = {
     deleteMovie,
     getShortMovies,
     getTopRatedMovies,
-    getLatestMovies
+    getLatestMovies,
+    searchMovies,
+    getMoviesByGenre,
 };
