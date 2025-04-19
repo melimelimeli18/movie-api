@@ -28,9 +28,27 @@ async function getShortMovies() {
     return Movie.find({ runtime:{$lte:40} });
 }
 
+// gebi
+
+async function getTopRatedMovies(limit = 1300) {
+    return Movie.find({
+        'imdb.rating' : { $ne: null, $type: 'number' }
+    })
+    .sort({ 'imdb.rating': -1 })
+    .limit(limit);
+}
+
+async function getLatestMovies(limit = 1300) {
+    return Movie.find({}).sort({ released: -1 }).limit(limit);
+}
+
 module.exports = {
     getMovies,
     getMovieById,
     createMovie,
     updateMovie,
+    deleteMovie,
+    getShortMovies,
+    getTopRatedMovies,
+    getLatestMovies
 };

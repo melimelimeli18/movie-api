@@ -28,4 +28,12 @@ module.exports = (app) => {
 
     // GET MOVIE BY ID
     route.get('/:id', movieController.getMovieById);
+
+    // gebi
+
+    // GET MOVIES by highest rating
+    route.get('/top-rated', movieController.getTopRatedMovies);
+
+    // GET MOVIES by latest release
+    route.get('/latest', movieController.getLatestMovies);
 };

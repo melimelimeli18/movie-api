@@ -79,9 +79,32 @@ async function getShortMovies(request, response, next) {
     }
 }
 
+// gebi
+async function getTopRatedMovies(request, response, next) {
+    try {
+        const movies = await movieService.getTopRatedMovies();
+        return response.status(200).json(movies);
+    } catch (error) {
+        return next(error);
+    }
+}
+
+async function getLatestMovies(request, response, next) {
+    try {
+        const movies = await movieService.getLatestMovies();
+        return response.status(200).json(movies);
+    } catch (error) {
+        return next(error);
+    }
+}
+
 module.exports = {
     getMovies,
     getMovieById,
     createMovie,
     updateMovie,
+    deleteMovie,
+    getShortMovies,
+    getTopRatedMovies,
+    getLatestMovies
 };

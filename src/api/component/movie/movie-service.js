@@ -28,9 +28,23 @@ async function getShortMovies() {
     return movieRepository.getShortMovies();
 }
 
+// gebi
+
+async function getTopRatedMovies() {
+    return movieRepository.getTopRatedMovies();
+}
+
+async function getLatestMovies() {
+    return movieRepository.getLatestMovies();
+}
+
 module.exports = {
     getMovies,
     getMovieById,
     createMovie,
     updateMovie,
+    deleteMovie,
+    getShortMovies,
+    getTopRatedMovies,
+    getLatestMovies
 };
