@@ -24,11 +24,6 @@ module.exports = (app) => {
     // GET MOVIES SHORT
     route.get('/short', movieController.getShortMovies);
 
-    //gatha
-
-    // GET MOVIE BY ID
-    route.get('/:id', movieController.getMovieById);
-
     // gebi
 
     // GET MOVIES by highest rating
@@ -44,4 +39,9 @@ module.exports = (app) => {
 
     //GET MOVIES by genre
     route.get('/genre/:genreId', movieController.getMoviesByGenre);
+
+    //gatha
+
+    // GET MOVIE BY ID
+    route.get('/:id', movieController.getMovieById);
 };

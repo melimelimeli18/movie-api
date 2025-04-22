@@ -1,4 +1,4 @@
-const Users = require('../../../models/users-schema');
+const Users = require('../../../models/user-schema');
 console.log(Users);
 
 async function getUsers() {

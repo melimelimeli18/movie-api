@@ -159,6 +159,37 @@ async function deleteUser(request, response, next) {
   }
 }
 
+async function loginUser(request, response, next) {
+  try {
+    const { email, password } = request.body;
+
+    const user = await usersRepository.getUserByEmail(email);
+    if(!user) {
+      throw errorResponder(
+        errorTypes.UNAUTHORIZED,
+        'Invalid email'
+      );
+    }
+    const isPasswordValid = await passwordMatched(password, user.password);
+    if(!isPasswordValid) {
+      throw errorResponder (
+        errorTypes.INVALID_PASSWORD,
+        'Invalid password'
+      );
+    }
+
+    return response.status(200).json({
+      message: 'Login successful',
+      user: {
+        email: user.mail,
+        full_name:user.full_name,
+      },
+    });
+  } catch (error) {
+    return next(error);
+  }
+}
+
 module.exports = {
   getUsers,
   getUser,
@@ -166,4 +197,5 @@ module.exports = {
   updateUser,
   changePassword,
   deleteUser,
+  loginUser,
 };
