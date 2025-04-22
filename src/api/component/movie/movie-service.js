@@ -1,7 +1,5 @@
 const movieRepository = require('./movie-repository');
 
-// gatha
-
 async function getMovies(){
     return movieRepository.getMovies();
 }

@@ -3,23 +3,20 @@ const cors = require('cors');
 const express = require('express');
 const pinoHTTP = require('pino-http');
 
+const app = express();
+
 const config = require('./config');
 const logger = require('./logger')('app');
 const movieRoutes = require('../api/component/movie/movie-route');
 const usersRoutes = require('../api/component/users/users-route');
 
-const app = express();
-
-
 const { errorResponder, errorTypes } = require('./errors');
-
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 usersRoutes(app, '/authentication');
 
 //Middleware 
-
 // Useful if behind a reverse proxy (Heroku, Bluemix, AWS ELB, Nginx, etc).
 // It shows the real origin IP in the Heroku or Cloudwatch logs.
 app.enable('trust proxy');
@@ -41,7 +38,6 @@ app.use(pinoHTTP({ logger }));
 
 
 // API routes
-// app.use(`${config.api.prefix}/movies`, movieRoutes);
 require('../api/component/movie/movie-route')(app);
 
 // Handle 404 route
