@@ -6,7 +6,6 @@ const { env, port } = require('./core/config');
 const config = require('./core/config');
 const logger = require('./core/logger')('app');
 
-// Join the database connection string
 const connectionString = new URL(config.database.connection);
 connectionString.pathname += config.database.name;
 
@@ -32,7 +31,6 @@ fs.readdirSync(modelsPath)
     dbExports[model.modelName] = model;
   });
 
-  // start server
 const server = app.listen(port, (err) => {
   if (err) {
     logger.fatal(err, 'Failed to start the server.');
